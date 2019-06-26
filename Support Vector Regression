@@ -22,12 +22,13 @@ from sklearn.svm import SVR
 regressor=SVR(kernel='rbf')
 regressor.fit(x,y)
 
-#Predicting a new result with Linear Regression
+#Predicting a new result
 y_pred=regressor.predict(6.5)
-#Visualising Polynomial Results
+
+#Visualising SVR Results
 plt.scatter(x,y,color='red')
 plt.plot(x,regressor.predict(x),color='blue')
-plt.title('Truth or Bluff(Linear Regression)')
+plt.title('Truth or Bluff(Support Vector Regression)')
 plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
