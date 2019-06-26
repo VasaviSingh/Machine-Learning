@@ -1,0 +1,30 @@
+#Decision Tree
+
+#Importing the Libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+#Import the dataset
+data=pd.read_csv('Position_Salaries.csv')
+x=data.iloc[:,1:2].values
+y=data.iloc[:,2:3].values
+
+#Fitting Decision Tree to data
+from sklearn.tree import DecisionTreeRegressor
+regressor=DecisionTreeRegressor(random_state=0)
+regressor.fit(x,y)
+
+#Predicting a new result
+y_pred=regressor.predict(6.5)
+
+#Visualising Results
+xgrid=np.arange(min(x),max(x),0.01)
+xgrid=xgrid.reshape((len(xgrid),1))
+plt.scatter(x,y,color='red')
+plt.plot(xgrid,regressor.predict(xgrid),color='blue')
+plt.title('Truth or Bluff(Decision Tree)')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+
